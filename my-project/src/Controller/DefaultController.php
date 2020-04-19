@@ -9,19 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/default/{name}/", name="default")
+     * @Route("/users/", name="get_users")
      */
-    public function index($name)
-    {
-        return $this->redirectToRoute('welcome');
-    }
+    public function get_users(){
+        $users = ['pop', 'thor', 'under', 'lif'];
 
-    /**
-     * @Route("/welcome/", name="welcome")
-     */
-    public function index2()
-    {
-        
-        return new Response('Welcome ');
-    }
+        return $this->render(
+            'default/index.html.twig',
+            ['users' => $users]
+        );
+    }  
 }
